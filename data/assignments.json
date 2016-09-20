@@ -1,0 +1,14 @@
+[
+	{
+	"name" : "Sections 8.1-8.2",
+	"deadline" : "Monday, September 19, 2016",
+	"filename" : "chapter8.json",
+	"programs" : ["99", "100", "101", "102", "103"]
+	},
+	{
+	"name" : "Sections 8.3-8.4",
+	"deadline" : "Monday, September 21, 2016",
+	"filename" : "chapter8.json",
+	"programs" : ["104", "105", "106", "107", "108"]
+	}
+]

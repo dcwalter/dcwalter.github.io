@@ -88,6 +88,9 @@
     <!-- Javascript for comparing source code -->
     <script type="text/javascript" src="script/diff_match_patch_uncompressed.js"></script>
 
+    <!-- Javascript for easily working with cookies -->
+    <script src="script/js.cookie.js"></script>
+
     <script type="text/javascript">
     var dmp = new diff_match_patch();
     var assignmentList;
@@ -135,7 +138,9 @@
       var index = $("#proglist").val();
       curProgram = programList[index.toString()];
       curProgramNumber = index;
-      $("#studenttext").val("")
+      $("#studenttext").val("");
+      $('div#outputdiv').html("");
+
       submissionHistory["startTime"] = new Date().toLocaleString();
       submissionHistory["program"] = curProgramNumber;
       submissionHistory["submissions"] = [];
@@ -195,20 +200,16 @@
     }
 
     function submittedAlready() {
-      alert(document.cookie);
-      var ca = document.cookie.split(';');
-      for(var i = 0; i <ca.length; i++) {
-        if (ca[i] == curProgramNumber+"=done") {
-            return true;
-        }
-      }
-      return false;
+      if (Cookies.get(curProgramNumber) == "done")
+        return true;
+      else
+        return false;
     }
 
     function submissionComplete() {
-      alert("Submission Completed");
-      document.cookie=document.cookie+";"+curProgramNumber + "=done";
-      alert(curProgramNumber);
+      Cookies.set(curProgramNumber, "done", {expires: 1/48});
+      $('div#outputdiv').html("<b>Submitted!</b>");
+      alert("Submission Complete.  Yay!");
     }
 
     function submit() {

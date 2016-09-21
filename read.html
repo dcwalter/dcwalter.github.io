@@ -194,10 +194,31 @@
       }
     }
 
+    function submittedAlready() {
+      alert(document.cookie);
+      var ca = document.cookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        if (ca[i] == curProgramNumber+"=done") {
+            return true;
+        }
+      }
+      return false;
+    }
+
+    function submissionComplete() {
+      alert("Submission Completed");
+      document.cookie=document.cookie+";"+curProgramNumber + "=done";
+      alert(curProgramNumber);
+    }
+
     function submit() {
       match=compare();
       if (!match) {
         alert("Your input program does not exactly match the book's.");
+        return;
+      }
+      if (submittedAlready()) {
+        alert("You already submitted this problem.");
         return;
       }
       submissionHistory["endTime"] = new Date().toLocaleString();
@@ -210,7 +231,7 @@
         data:{"entry_1372203803":JSON.stringify(submissionHistory)},
         type:"POST",
         dataType:"xml",
-        statusCode: {0:function() {alert("Submission Completed")}, 200:function() {alert("Submission Completed")}}
+        statusCode: {0:submissionComplete, 200:submissionComplete}
       });
     }
     </script>

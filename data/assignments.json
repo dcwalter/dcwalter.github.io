@@ -1,5 +1,17 @@
 [
     {
+    "name": "Sections 13.3",
+    "deadline": "Wednesday, October 19, 2016",
+    "filename": "chapter13.json",
+    "programs": [
+      "165",
+      "166",
+      "167",
+      "168",
+      "169"
+    ]
+  	},
+    {
     "name": "Sections 13.1-13.2",
     "deadline": "Monday, October 17, 2016",
     "filename": "chapter13.json",
